@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       render :new, alert: "Passwords did not match"
     end
     user = User.create(user_params)
-    session[:user_id] = user.id
+    current_user=(user)
     redirect_to user_path(user)
     # binding.pry
   end
