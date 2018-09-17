@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
         !!session[:user_id]
     end
 
-    def current_user=(user_object)
-        session[:user_id] = user_object.id
-    end
-
     def current_user
         User.find(session[:user_id])
     end

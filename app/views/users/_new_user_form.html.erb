@@ -1,10 +1,10 @@
 <h3>New User</h3>
-    <% binding.pry %>
-<% if user.errors %>
 
+<% if !user.errors.messages.empty? %>
+    <h5 style="color: red;">Please review your submission</h5>
     <ul>
     <% user.errors.messages.each do |parameter, message| %>
-        <p><%= parameter %>: <%= message %></p>
+        <li><%= parameter %>: <%= message[0] %></li>
     <% end %>
     </ul>
 
@@ -25,7 +25,6 @@
     <%= f.password_field :password_confirm %><br>
 
     <%= f.submit %>
-
 
 
 <% end %>

@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     end
     user = User.new(user_params)
     if user.save
-      current_user=(user)
-      redirect_to user_path(user)
+      session[:user_id] = user.id
+      redirect_to current_user
     else
       @user = user
       render :new
