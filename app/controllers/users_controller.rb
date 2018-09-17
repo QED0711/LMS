@@ -11,9 +11,14 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       render :new, alert: "Passwords did not match"
     end
-    user = User.create(user_params)
-    current_user=(user)
-    redirect_to user_path(user)
+    user = User.new(user_params)
+    if user.save
+      current_user=(user)
+      redirect_to user_path(user)
+    else
+      @user = user
+      render :new
+    end
     # binding.pry
   end
 

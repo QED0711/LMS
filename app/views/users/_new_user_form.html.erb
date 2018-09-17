@@ -1,4 +1,14 @@
 <h3>New User</h3>
+    <% binding.pry %>
+<% if user.errors %>
+
+    <ul>
+    <% user.errors.messages.each do |parameter, message| %>
+        <p><%= parameter %>: <%= message %></p>
+    <% end %>
+    </ul>
+
+<% end %>
 
 <%= form_for user do |f| %>
 
