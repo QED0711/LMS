@@ -1,4 +1,4 @@
-<h3>New User</h3>
+<h3><%= path == "new" ? "Sign Up" : "Login"  %></h3>
 
 <% if !user.errors.messages.empty? %>
     <h5 style="color: red;">Please review your submission</h5>
@@ -20,9 +20,11 @@
 
     <%= f.label :password %><br>
     <%= f.password_field :password %><br>
-
-    <%= f.label :password_confirm, "Confirm Password" %><br>
-    <%= f.password_field :password_confirm %><br>
+    
+    <% if path == "new" %>
+        <%= f.label :password_confirm, "Confirm Password" %><br>
+        <%= f.password_field :password_confirm %><br>
+    <% end %>
 
     <%= f.submit %>
 

@@ -1,16 +1,15 @@
 class UsersController < ApplicationController
   def login
+    @user = User.new
+    @path = "login"
   end
 
   def new
     @user = User.new
+    @path = "new"
   end
 
   def create
-    if params[:user][:password] != params[:user][:password_confirm]
-      @user = User.new(user_params)
-      render :new, alert: "Passwords did not match"
-    end
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
@@ -19,7 +18,6 @@ class UsersController < ApplicationController
       @user = user
       render :new
     end
-    # binding.pry
   end
 
   def show
