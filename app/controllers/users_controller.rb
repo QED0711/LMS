@@ -1,10 +1,16 @@
 class UsersController < ApplicationController
   def login
+    if user_signed_in?
+      redirect_to current_user
+    end
     @user = User.new
     @path = "login"
   end
 
   def new
+    if user_signed_in?
+      redirect_to current_user
+    end
     @user = User.new
     @path = "new"
   end
