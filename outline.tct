@@ -1,0 +1,116 @@
+
+Storyboard:
+    - '/' directs a user to a sign in/sign up page
+    - User is brought to their course profile page where they can see all their courses
+    - '/courses/:slug (courses show page) shows all lessons for that course
+        - Student users can only see lessons assigned and published to the course
+        - student users can only access the content during the active course dates
+        - Teacher users can see all lessons that they have assigned to their course (even unpublished ones)
+        - teacher users can access the course either during or outside active dates
+    - '/courses/:course_id/lessons/:id' (lesson show page) Allows users to view the lesson content
+    - '/lessons' lets users see all published lessons, organized by category
+    - '/lessons/:id' Alternate route to view the lesson 
+        - No submission option available for student users (or any users for that matter) when not viewed through their course
+    - '/lessons/new' create a new lesson form
+        - only available to teacher users and above will have access to this page
+    - '/lessons/:id/edit'
+
+Models:
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+USER:
+
+Associations:
+    has_many :user_courses
+    has_many :courses, through: user_courses
+    has_many :user_lessons
+    has_many :lessons, through: :user_lessons
+
+Schema: 
+    name:string
+    email:string
+    password_digest:string
+    authorization:integer
+
+Authorization Levels:
+    - Student
+    - Teacher
+    - Admin
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+COURSE:
+
+Schema:
+    title:string active_start_date:datetime active_end_date:datetime
+
+Associations:
+    has_many :user_courses
+    has_many :users, through: :user_courses
+    has_many :units
+    has_many :categories, through: :units
+    has_many :course_lessons
+    has_many :lessons, through: :course_lessons
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+USER_COURSE (join model)
+
+Schema:
+    user_id:integer course_id: integer
+
+Associations:
+    belongs_to :user
+    belongs_to :course
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+LESSON:
+
+Schema:
+    published:boolean
+    category_id:integer
+
+Associations:
+    belongs_to :category
+    has_many :course_lessons
+    has_many :courses, through: :course_lessons
+    has_many :contents
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+UNIT (join model)
+
+Schema:
+    title:string course_id:integer lesson_id:integer
+
+Associations:
+    belongs_to :course
+    belongs_to :lesson
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+CONTENT:
+
+Schema:
+    data:string type:integer lesson_id:integer
+
+Associations:
+    belongs_to :lesson
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+CATEGORY: 
+
+Schema:
+    title:string
+
+Associations:
+    has_many :lessons
+    has_many :course_categories
+    has_many :courses, through: :categories
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+COURSE_CATEGORIES (join table)
+
+Schema: 
+    course_id:integer categories_id:integer
+
+Associations:
+    belongs_to :course
+    belongs_to :category
