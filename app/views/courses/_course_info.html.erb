@@ -1,0 +1,18 @@
+<h3>Instructors</h3>
+<ul>
+    <% @instructors.each do |instructor| %>
+        <li><%= link_to instructor.name, instructor %></li>
+    <% end %>
+</ul>
+
+
+<h3>Students</h3>
+<ul>
+    <% @students.each do |student| %>
+        <% if current_user.instructor? || current_user.admin? %>
+            <li><%= link_to student.name, student %></li>
+        <% else %>
+            <li><%= student.name %></li>
+        <%end %>
+    <% end %>
+</ul>

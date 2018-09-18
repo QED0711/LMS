@@ -26,6 +26,12 @@ class Course < ApplicationRecord
         end
     end
 
+    def students
+        self.users.select do |user|
+            user.authorization == "student"
+        end
+    end
+
     private
 
     def downcase_title
