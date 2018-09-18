@@ -7,6 +7,7 @@ class Course < ApplicationRecord
     has_many :course_categories
     has_many :categories, through: :course_categories
 
+    before_validation :downcase_title
     validate :valid_title
 
     def slug
@@ -20,8 +21,13 @@ class Course < ApplicationRecord
 
     private
 
+    def downcase_title
+        self.title = self.title.downcase
+        binding.pry
+    end
+
     def valid_title
-        if self.title.scan(/[\W\D]/)
+        if self.title.scan(/[\W\D]/).empty?
             self.errors.add(:title, "You many only have letters and numbers in your title")
         end
     end
