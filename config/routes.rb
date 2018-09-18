@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root "static#home"
 
-  resources :users, only: [:create, :show]
+  resources :users, only: [:create, :show, :destroy]
   get '/login' => 'users#login'
   get '/signup' => 'users#new'
 
