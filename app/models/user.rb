@@ -9,4 +9,6 @@ class User < ApplicationRecord
 
     validates :name, :email, :password, presence: true
 
+    enum authorization: [:admin, :instructor, :student]
+
 end
