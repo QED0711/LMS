@@ -20,6 +20,12 @@ class Course < ApplicationRecord
         self.find_by(title: title)
     end
 
+    def instructors
+        self.users.select do |user|
+            user.authorization == "instructor" || user.authorization == "admin"
+        end
+    end
+
     private
 
     def downcase_title
