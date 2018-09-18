@@ -9,6 +9,7 @@ class Course < ApplicationRecord
 
     before_validation :downcase_title
     validate :valid_title
+    validates :title, uniqueness: true
 
     def slug
         self.title.gsub(" ", "-").downcase
@@ -23,11 +24,10 @@ class Course < ApplicationRecord
 
     def downcase_title
         self.title = self.title.downcase
-        binding.pry
     end
 
     def valid_title
-        if self.title.scan(/[\W\D]/).empty?
+        if !self.title.scan(/[\-\,\!\*\@\#\$\%\^\&\(\)]/).empty?
             self.errors.add(:title, "You many only have letters and numbers in your title")
         end
     end
