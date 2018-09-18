@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :show, :destroy]
   get '/login' => 'users#login'
+  post '/signin' => 'users#sign_in'
   get '/signup' => 'users#new'
 
 end

@@ -1,2 +1,7 @@
 
+
+<% if alert %>
+    <h5><%= alert %></h5>
+<% end %>
+
 <%= render partial: 'users/user_form', locals: {user: @user, path: @path} %>

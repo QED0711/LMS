@@ -10,7 +10,7 @@
 
 <% end %>
 
-<%= form_for user do |f| %>
+<%= form_for user, url: path == "new" ? users_path : signin_path do |f| %>
 
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
@@ -26,7 +26,11 @@
         <%= f.password_field :password_confirm %><br>
     <% end %>
 
-    <%= f.submit %>
+    <% if path == "new" %>
+        <%= f.submit "Sign Up" %>
+    <% else %>
+        <%= f.submit "Login" %>
+    <% end %>
 
 
 <% end %>

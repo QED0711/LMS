@@ -1,10 +1,22 @@
 class UsersController < ApplicationController
-  def login
+  def login 
     if user_signed_in?
       redirect_to current_user
     end
     @user = User.new
     @path = "login"
+  end
+
+  def sign_in
+    user = User.find_by(name: params[:user][:name], email: params[:user][:email])
+    if !!user && user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
+      redirect_to current_user
+    else
+      @user = user
+      @path = 'login'
+      redirect_to login_path, alert: "Unable to find user. Please check your credentials"
+    end
   end
 
   def new
