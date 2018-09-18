@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   post '/signin' => 'users#sign_in'
   get '/signup' => 'users#new'
 
+  resources :courses, only: [:index]
+  get '/courses/:slug' => 'courses#show'
+
 end
