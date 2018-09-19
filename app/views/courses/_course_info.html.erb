@@ -16,3 +16,15 @@
         <%end %>
     <% end %>
 </ul>
+
+
+<h3>Lessons</h3>
+<ul>
+
+    <% @lessons.each do |lesson| %>
+
+        <li><%= link_to lesson.title, lesson %></li>
+    
+    <% end %>
+
+</ul>
