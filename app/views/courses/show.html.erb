@@ -1,2 +1,8 @@
 
 <%= render partial: 'course_info', locals: {instructor: @instructor, students: @students}  %>
+
+<h3>Lessons</h3>
+
+<ul>
+    <%= render partial: "lessons/lesson", collection: @lessons %>
+</ul>

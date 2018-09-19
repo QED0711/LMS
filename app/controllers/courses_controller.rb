@@ -17,6 +17,7 @@ class CoursesController < ApplicationController
         @course = Course.find_by_slug(params[:slug])
         @instructors = @course.instructors
         @students = @course.students
+        @lessons = @course.lessons
     end
 
 
