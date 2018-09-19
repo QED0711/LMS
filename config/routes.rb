@@ -3,12 +3,15 @@ Rails.application.routes.draw do
 
   root "static#home"
 
-  resources :users, only: [:create, :show, :destroy]
+  resources :users, only: [:create, :show, :destroy] do
+    resources :courses, only: [:index]
+  end
   get '/login' => 'users#login'
   post '/signin' => 'users#sign_in'
   get '/signup' => 'users#new'
 
   resources :courses, only: [:index]
   get '/courses/:slug' => 'courses#show'
+
 
 end
