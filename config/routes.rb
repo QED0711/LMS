@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   resources :courses, only: [:index]
   get '/courses/:slug' => 'courses#show'
 
+  resources :lessons
+
 
 end

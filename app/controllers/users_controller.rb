@@ -40,6 +40,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @lessons = @user.lessons
   end
 
   def destroy

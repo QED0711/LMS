@@ -1,4 +1,6 @@
-<h1>Courses</h1>
+
+<h1><%= params[:user_id] ? "Your Courses" : "All Courses" %></h1>
+
 <ul>
     <%= render partial: 'course', collection: @courses %>
 </ul>
