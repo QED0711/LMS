@@ -1,0 +1,14 @@
+
+
+<% contents.each do |content| %>
+
+    <% case content.data_type %>
+        <% when "heading" %>
+            <h2><%= content.data %></h2>
+        <% when "paragraph" %>
+            <p><%= content.data %></p>
+        <% when "image" %>
+            <img src=<%= content.data %> alt="image">
+    <% end %>
+
+<% end %>

@@ -1,0 +1,12 @@
+
+<%= form_for content, url: lesson_contents_path do |f| %>
+
+    <%= f.label :type, "Type" %><br>
+    <%= f.select :data_type, Content.data_types %><br>
+    
+    <%= f.label :data, "Content" %><br>
+    <%= f.text_area :data %><br>
+
+    <%= f.submit %>
+
+<% end %>

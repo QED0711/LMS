@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :show, :destroy, :edit, :update] do
     resources :courses, only: [:index]
   end
+
   get '/login' => 'users#login'
   post '/signin' => 'users#sign_in'
   get '/signup' => 'users#new'
@@ -13,7 +14,9 @@ Rails.application.routes.draw do
   resources :courses, only: [:index]
   get '/courses/:slug' => 'courses#show'
 
-  resources :lessons
+  resources :lessons do 
+    resources :contents, only: [:new, :create, :edit, :update, :destroy]
+  end
 
 
 end

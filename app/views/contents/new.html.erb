@@ -1,0 +1,7 @@
+<h2><%= @lesson.title %></h2> 
+
+<% if @contents %>
+    <%= render partial: "contents/content", locals: {contents: @contents}%>
+<% end %>
+
+<%= render partial: "contents/content_form", locals: {content: Content.new} %>
