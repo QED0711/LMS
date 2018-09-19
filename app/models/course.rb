@@ -33,6 +33,12 @@ class Course < ApplicationRecord
         end
     end
 
+    def self.user_courses(user)
+        Course.all.select do |course|
+            course.users.include?(user)
+        end
+    end
+
     private
 
     def downcase_title

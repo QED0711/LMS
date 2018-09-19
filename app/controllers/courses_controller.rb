@@ -2,9 +2,11 @@ class CoursesController < ApplicationController
 
     def index
         if params[:user_id]
-            @user = User.find(params[:user_id])
-            @courses = Course.all.select do |course|
-                course.users.include?(@user)
+            if params[:user_id].to_i == current_user.id
+                @user = current_user
+                @courses = Course.user_courses(@user)
+            else
+                redirect_to :root
             end
         else
             @courses = Course.all
