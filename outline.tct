@@ -49,8 +49,6 @@ Associations:
     has_many :users, through: :user_courses
     has_many :units
     has_many :categories, through: :units
-    has_many :course_lessons
-    has_many :lessons, through: :course_lessons
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 USER_COURSE (join model)
@@ -63,7 +61,7 @@ Associations:
     belongs_to :course
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-LESSON:
+LESSON: (join model)
 
 Schema:
     published:boolean
@@ -71,20 +69,44 @@ Schema:
 
 Associations:
     belongs_to :category
-    has_many :course_lessons
-    has_many :courses, through: :course_lessons
+    belongs_to :course
+    belongs_to: unit
     has_many :contents
+    has_many :user_lessons
+    has_many :users, through: user_lessons
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-UNIT (join model)
+USER_LESSON (join model)
+
+Schema:
+    user_id:integer
+    lesson_id:integer
+
+Associations:
+    belongs_to :user
+    belongs_to :lesson
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+UNIT
 
 Schema:
     title:string course_id:integer lesson_id:integer
 
 Associations:
     belongs_to :course
+    has_many :lesson_units
+    has_many :lessons, through: :lesson_units
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+LESSON_UNIT (join model)
+
+Schema:
+    lesson_id:integer
+    unit_id:integer
+
+Associations:
     belongs_to :lesson
+    belongs_to :unit
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 CONTENT:
 
@@ -102,8 +124,6 @@ Schema:
 
 Associations:
     has_many :lessons
-    has_many :course_categories
-    has_many :courses, through: :categories
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 COURSE_CATEGORIES (join table)
