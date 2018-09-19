@@ -1,0 +1,16 @@
+<div class="bio">
+<% #binding.pry %>
+    <% if bio %>
+        <p><%= bio %></p>
+    <% elsif user && bio == nil %>
+        <%= form_for user do |f| %>
+            <%= f.label :bio, "Add a Biography" %><br>
+            <%= f.text_area :bio %><br>
+
+            <%= f.label :password %><br>
+            <%= f.password_field  :password %><br>
+
+            <%= f.submit "update biography" %>
+        <% end %>
+    <% end %>
+</div>

@@ -39,8 +39,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @lessons = @user.lessons
+    @edit_privileges = @user == current_user 
   end
 
   def destroy
@@ -48,9 +49,23 @@ class UsersController < ApplicationController
     redirect_to '/'
   end
 
+  def edit
+    if current_user.id != params[:id].to_i
+      redirect_to :root
+    end
+  end
+
+  def update
+    @user = current_user
+    if @user.authenticate(params[:user][:password])
+      @user.update(user_params)
+    end
+    redirect_to @user
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :bio)
   end
 end

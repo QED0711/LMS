@@ -1,4 +1,15 @@
 
-<ul>
-    <%= render partial: "lessons/lesson", collection: @lessons %>
-</ul>
+<h3><%= @user.name %></h3>
+
+
+<% if @edit_privileges %>
+    <%= render partial: "bio", locals: {bio: @user.bio, user: @user} %>
+<% else %>
+    <%= render partial: "bio", locals: {bio: @user.bio, user: nil} %>
+<% end %>
+
+<% if @user == current_user %>
+    <%= link_to "edit", edit_user_path(current_user) %>
+<% end %>
+
+
