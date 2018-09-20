@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :lessons do 
     resources :contents, only: [:new, :create, :edit, :update, :destroy]
   end
+  post '/lessons/:id/publish' => 'lessons#publish'
 
 
 end

@@ -1,0 +1,6 @@
+
+<% if !lesson.published %>
+    <%= button_to "Publish", "/lessons/#{lesson.id}/publish", params: {publish: true} %>
+<% else %>
+    <%= button_to "Unpublish", "/lessons/#{lesson.id}/publish", params: {publish: false} %>
+<% end %>

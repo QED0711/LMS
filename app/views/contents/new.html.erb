@@ -5,3 +5,5 @@
 <% end %>
 
 <%= render partial: "contents/content_form", locals: {content: Content.new} %>
+
+<%= button_to "Preview", lesson_path(@lesson), method: :get %>

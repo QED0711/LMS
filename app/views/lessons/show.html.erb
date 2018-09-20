@@ -1,2 +1,7 @@
 <h1><%= @lesson.title %></h1>
 
+<%= render partial: "contents/content", locals: {contents: @contents} %>
+
+<% if (@lesson.users.include?(current_user) && (current_user.instructor? || current_user.admin?)) %>
+    <%= render partial: "publish_buttons", locals: {lesson: @lesson} %>
+<% end %>
