@@ -1,3 +1,8 @@
 
-<%= render partial: 'course_info', locals: {instructor: @instructor, students: @students, lessons: @lessons}  %>
+<%= render partial: 'course_info', locals: {course: @course, instructor: @instructor, students: @students, lessons: @lessons}  %>
 
+<% if privileged %>
+
+    <%= button_to "Create a new lesson", new_course_lesson_path(@course), method: :get %>
+
+<% end %>

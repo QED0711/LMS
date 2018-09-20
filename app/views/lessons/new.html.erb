@@ -1,0 +1,17 @@
+<h1><%= @course.title.titlecase %></h1>
+
+<h3>New Lesson</h3>
+
+<% #raise params.inspect %>
+
+<%= form_for @lesson, url: course_lessons_path(@course) do |f| %>
+
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+
+
+    
+
+    <%= f.submit %>
+
+<% end %>

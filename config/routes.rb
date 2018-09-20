@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   post '/signin' => 'users#sign_in'
   get '/signup' => 'users#new'
 
-  resources :courses, only: [:index]
+  resources :courses, only: [:index] do
+    resources :lessons, only: [:new, :create]
+  end
   get '/courses/:slug' => 'courses#show'
 
   resources :lessons do 
