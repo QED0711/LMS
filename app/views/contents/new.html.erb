@@ -1,5 +1,5 @@
 <h2><%= @lesson.title %></h2> 
-
+<h5>Category: <%= @lesson.category.title %></h5>
 <% if @contents %>
     <%= render partial: "contents/content", locals: {contents: @contents}%>
 <% end %>

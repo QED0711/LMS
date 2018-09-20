@@ -9,6 +9,13 @@ class Lesson < ApplicationRecord
     has_many :user_lessons
     has_many :users, through: :user_lessons
 
+    accepts_nested_attributes_for :category
+
+
     validates :title, presence: true
+
+    # def category_attributes=(category_attributes)
+    #     binding.pry
+    # end
 
 end

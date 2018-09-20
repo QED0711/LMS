@@ -10,7 +10,10 @@
     <%= f.text_field :title %><br>
 
 
-    
+    <%= f.fields_for :category, @lesson.category do |category| %>
+        <%= category.label :title, "Category" %><br>
+        <%= category.text_field :title %><br>
+    <% end %>
 
     <%= f.submit %>
 
