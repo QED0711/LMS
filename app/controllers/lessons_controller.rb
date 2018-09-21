@@ -35,6 +35,8 @@ class LessonsController < ApplicationController
     def create 
         @course = Course.find(params[:course_id])
         @lesson = Lesson.new(lesson_params)
+        @lesson.courses << @course
+        @lesson.users << current_user
         binding.pry
         # @lesson.category = Category.find_or_create_by(title: "Music") # make this line dynamic
         if @lesson.save

@@ -1,8 +1,8 @@
 <h1><%= @lesson.title %></h1>
-<h5>Cateogry: <%= @lesson.category.title %></h5>
+<h5>Category: <%= @lesson.category.title %></h5>
 
 <%= render partial: "contents/content", locals: {contents: @contents} %>
 
-<% if (@lesson.users.include?(current_user) && (current_user.instructor? || current_user.admin?)) %>
+<% if (@lesson.users.include?(current_user) && privileged) %>
     <%= render partial: "publish_buttons", locals: {lesson: @lesson} %>
 <% end %>
