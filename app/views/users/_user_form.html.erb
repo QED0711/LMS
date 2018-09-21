@@ -29,6 +29,9 @@
     <% end %>
 
     <% if path == "new" %>
+        <h5>If you would like to sign up as an instructor, provide your special token below: </h5>
+        <%= label_tag :instructor_token %><br>
+        <%= text_field_tag :instructor_token %><br>
         <%= f.submit "Sign Up" %>
     <% else %>
         <%= f.submit "Login" %>
