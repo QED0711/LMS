@@ -1,7 +1,8 @@
 <nav class="nav banner">
     <h3>Signed in as: <%= current_user.name %></h3>
     <%= button_to "Home", root_path, method: :get %>
-    <%= button_to "Explore", courses_path, method: :get %>
+    <%= button_to "Explore Courses", courses_path, method: :get %>
+    <%= button_to "Explore Lessons", categories_path, method: :get %>
     <%= button_to "Your Courses", {controller: :courses, action: :index, user_id: current_user.id}, method: :get %>
     <%= button_to "Logout", {controller: :users, action: 'destroy', id: current_user.id}, method: :delete %>
 </nav>
