@@ -20,6 +20,12 @@ class CoursesController < ApplicationController
         @lessons = @course.lessons
     end
 
+    def enroll
+        @course = Course.find(params[:id])
+        current_user.courses << @course
+        redirect_to "/courses/#{@course.slug}"
+    end
+
 
 
 end

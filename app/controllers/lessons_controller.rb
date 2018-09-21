@@ -37,7 +37,7 @@ class LessonsController < ApplicationController
         @lesson = Lesson.new(lesson_params)
         @lesson.courses << @course
         @lesson.users << current_user
-        binding.pry
+        # binding.pry
         # @lesson.category = Category.find_or_create_by(title: "Music") # make this line dynamic
         if @lesson.save
             redirect_to new_lesson_content_path(@lesson)

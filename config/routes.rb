@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :lessons, only: [:new, :create]
   end
   get '/courses/:slug' => 'courses#show'
+  post '/courses/:id/enroll' => 'courses#enroll'
 
   resources :lessons do 
     resources :contents, only: [:new, :create, :edit, :update, :destroy]

@@ -4,3 +4,9 @@
 <% if privileged %>
     <%= button_to "Create a new lesson", new_course_lesson_path(@course), method: :get %>
 <% end %>
+
+<% if current_user.student? && !current_user.courses.include?(@course) %>
+
+    <%= button_to "Enroll", "/courses/#{@course.id}/enroll" %>
+
+<% end %>
