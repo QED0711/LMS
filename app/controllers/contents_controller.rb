@@ -17,7 +17,11 @@ class ContentsController < ApplicationController
     def update
         @lesson = Lesson.find(params[:lesson_id])
         @content = Content.find(params[:id])
-        @content.update(content_params)
+        if params[:commit] == "delete"
+            @content.delete
+        else
+            @content.update(content_params)
+        end
         # binding.pry
         redirect_to edit_lesson_path(@lesson)
     end
