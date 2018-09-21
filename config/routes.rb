@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   post '/signin' => 'users#sign_in'
   get '/signup' => 'users#new'
 
-  resources :courses, only: [:index] do
+  resources :courses, only: [:index, :new, :create] do
     resources :lessons, only: [:new, :create]
   end
-  get '/courses/:slug' => 'courses#show'
+  get '/courses/:slug' => 'courses#show', as: 'course'
   post '/courses/:id/enroll' => 'courses#enroll'
 
   resources :lessons do 

@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
 
     def index
-
+        
     end
 
     def show
@@ -38,7 +38,7 @@ class LessonsController < ApplicationController
         @lesson.courses << @course
         @lesson.users << current_user
         @lesson.published = false
-        binding.pry
+        # binding.pry
         # @lesson.category = Category.find_or_create_by(title: "Music") # make this line dynamic
         if @lesson.save
             redirect_to new_lesson_content_path(@lesson)

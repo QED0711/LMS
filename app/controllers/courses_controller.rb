@@ -26,6 +26,26 @@ class CoursesController < ApplicationController
         redirect_to "/courses/#{@course.slug}"
     end
 
+    def new 
+        @course = Course.new
+    end
+
+    def create
+        @course = Course.new(course_params)
+        @course.users << current_user
+        if @course.save
+            redirect_to course_path(@course.slug)
+        else
+            render :new
+        end
+    end
+
+    private
+
+    def course_params
+        params.require(:course).permit(:title) 
+    end
+
 
 
 end
