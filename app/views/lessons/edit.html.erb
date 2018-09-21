@@ -1,0 +1,6 @@
+<h3>Lesson Editor</h3>
+
+<% @contents.each do |content| %>
+    <% # posts each content block to content#update %>
+    <%= render partial: "contents/content_form", locals: {content: content, path: lesson_content_path(@lesson, content)}%>
+<% end %>

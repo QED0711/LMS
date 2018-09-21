@@ -1,9 +1,9 @@
 <h2><%= @lesson.title %></h2> 
 <h5>Category: <%= @lesson.category.title %></h5>
 <% if @contents %>
-    <%= render partial: "contents/content", locals: {contents: @contents}%>
+    <%= render partial: "contents/content", locals: {contents: @contents, path: lesson_contents_path}%>
 <% end %>
 
-<%= render partial: "contents/content_form", locals: {content: Content.new} %>
+<%= render partial: "contents/content_form", locals: {content: Content.new, path: lesson_contents_path} %>
 
 <%= button_to "Preview", lesson_path(@lesson), method: :get %>

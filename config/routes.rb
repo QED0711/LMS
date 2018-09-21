@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post '/courses/:id/enroll' => 'courses#enroll'
 
   resources :lessons do 
-    resources :contents, only: [:new, :create, :edit, :update]
+    resources :contents, only: [:new, :create, :update]
   end
   post '/lessons/:id/publish' => 'lessons#publish'
   delete '/lessons/:id/delete' => 'lessons#destroy', as: 'delete_lesson'

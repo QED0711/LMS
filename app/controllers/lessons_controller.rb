@@ -54,6 +54,15 @@ class LessonsController < ApplicationController
         redirect_to user_courses_path(current_user)
     end
 
+    def edit
+        @lesson = Lesson.find(params[:id])
+        @contents = @lesson.contents
+    end
+
+    def update
+
+    end
+
     private
 
     def lesson_params

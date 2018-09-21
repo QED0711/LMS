@@ -12,11 +12,14 @@ class ContentsController < ApplicationController
     end
 
     def edit
-
     end
 
     def update
-
+        @lesson = Lesson.find(params[:lesson_id])
+        @content = Content.find(params[:id])
+        @content.update(content_params)
+        # binding.pry
+        redirect_to edit_lesson_path(@lesson)
     end
 
     def destroy

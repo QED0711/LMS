@@ -28,7 +28,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     user = User.new(user_params)
     if params[:instructor_token] == "secret"
       user.instructor!
@@ -64,9 +63,9 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.authenticate(params[:user][:password])
+    # if @user.authenticate(params[:user][:password])
       @user.update(user_params)
-    end
+    # end
     redirect_to @user
   end
 
