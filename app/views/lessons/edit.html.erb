@@ -4,3 +4,7 @@
     <% # posts each content block to content#update %>
     <%= render partial: "contents/content_form", locals: {content: content, path: lesson_content_path(@lesson, content)}%>
 <% end %>
+
+<%= render partial: "contents/content_form", locals: {content: Content.new, path: lesson_contents_path(@lesson)}%>
+
+<%= button_to "Preview", lesson_path(@lesson), method: :get %>
