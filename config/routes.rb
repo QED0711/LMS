@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   end
   post '/lessons/:id/publish' => 'lessons#publish'
 
+  resources :categories, only: [:index, :show]
+
 
 end

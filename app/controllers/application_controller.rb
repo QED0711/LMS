@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
 
     def privileged
-        current_user.admin? || curren_user.instructor?
+        current_user.admin? || current_user.instructor?
     end
 
 
