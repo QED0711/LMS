@@ -4,3 +4,5 @@
 <% else %>
     <%= button_to "Unpublish", "/lessons/#{lesson.id}/publish", params: {publish: false} %>
 <% end %>
+
+<%= button_to "Delete Lesson",delete_lesson_path(lesson), method: :delete %>
