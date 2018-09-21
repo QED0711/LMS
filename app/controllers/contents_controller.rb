@@ -7,9 +7,12 @@ class ContentsController < ApplicationController
 
     def create
         @lesson = Lesson.find(params[:lesson_id])
-        @lesson.contents.create(content_params)
-        # redirect_to new_lesson_content_path
-        redirect_to edit_lesson_path(@lesson)
+        if @lesson.contents.create(content_params)
+            # redirect_to new_lesson_content_path
+            redirect_to edit_lesson_path(@lesson)
+        else
+            render edit_lesson_path(@lesson)
+        end
     end
 
     def edit
