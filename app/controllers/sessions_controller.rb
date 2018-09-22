@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
       u.name = auth['info']['name']
       u.email = auth['info']['email']
       u.image = auth['info']['image']
-      u.password = auth['uid'] # gives user a password so it passes validations. fix this.
+      # binding.pry
+      u.password = (auth['uid'].to_i * Time.new.usec).to_s
       u.student!
     end
   
     session[:user_id] = @user.id
-    binding.pry
     redirect_to user_path(@user)
   end
   
