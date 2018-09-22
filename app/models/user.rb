@@ -8,8 +8,13 @@ class User < ApplicationRecord
     has_secure_password
 
     validates :name, :email, presence: true
-    validates :password, length: {minimum: 1}, if: -> {password.present?}
+    # validates :password, length: {minimum: 1}, if: -> {password.present?}
 
     enum authorization: [:admin, :instructor, :student]
 
+    private
+
+    # def credentials
+    #     if !self.uid
+    # end
 end
