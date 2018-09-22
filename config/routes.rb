@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root "static#home"
 
+  get '/auth/facebook/callback' => 'sessions#create' # params to user model 
+
   resources :users, only: [:create, :show, :destroy, :edit, :update] do
     resources :courses, only: [:index]
   end
