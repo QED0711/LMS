@@ -2,19 +2,5 @@
 
 <h3>New Lesson</h3>
 
-<% #raise params.inspect %>
+<%= render partial: "lessons/lesson_form", locals: {lesson: @lesson, course: @course} %>
 
-<%= form_for @lesson, url: course_lessons_path(@course) do |f| %>
-
-    <%= f.label :title %><br>
-    <%= f.text_field :title %><br>
-
-
-    <%= f.fields_for :category, @lesson.category do |category| %>
-        <%= category.label :title, "Category" %><br>
-        <%= category.text_field :title %><br>
-    <% end %>
-
-    <%= f.submit %>
-
-<% end %>

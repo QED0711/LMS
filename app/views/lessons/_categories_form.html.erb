@@ -1,0 +1,11 @@
+
+
+<%= f.fields_for :category, lesson.category do |category| %>
+    <%= category.label :title, "Category" %><br>
+    <%= category.text_field :title, list: "categories_autocomplete" %><br>
+    <datalist id="categories_autocomplete">
+        <% Category.all.each do |category| %>
+            <option value="<%= category.title %>">
+        <% end %>
+    </datalist>
+<% end %>
