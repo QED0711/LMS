@@ -40,9 +40,10 @@ body {
      border-radius: 2px;
  }
 
-input{
+input, textarea{
     border-radius: 4px;
     border: 1px solid black;
+    margin-top: 4px;
 }
 
 input[type=submit]{
@@ -83,6 +84,12 @@ input[type=submit]{
     background-color: var(--secondary-background);
     padding: 10px 0 20px 0;
     border-radius: 10px;
+}
+
+ul {
+    width: 22%;
+    margin: 0 auto;
+    text-align: left;
 }
 
 li {
