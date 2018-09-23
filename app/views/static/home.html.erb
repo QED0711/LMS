@@ -1,10 +1,14 @@
-<h1>Welcome to the MUSC 140 Portal Page</h1>
 
-<div class="button_group">
+<div class="landing">
+    <h1 class="title">Welcome to the Learning Management System</h1>
 
-    <%= button_to "Login", '/login', method: :get %>
-    <%= button_to "Sign Up", '/signup', method: :get %>
+    <div class="button-group">
 
+        <%= button_to "Login", '/login', method: :get %>
+        <%= button_to "Sign Up", '/signup', method: :get %>
+
+    
+
+    </div>
     <%= link_to "Log in with Facebook", '/auth/facebook' %>
-
 </div>

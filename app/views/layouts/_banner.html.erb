@@ -1,11 +1,12 @@
-<h3>Signed in as: <%= current_user.name %> | <%= current_user.authorization.titlecase %> account</h3>
 <nav class="nav banner">
     <%= button_to "Home", root_path, method: :get %>
     <%= button_to "Explore Courses", courses_path, method: :get %>
     <%= button_to "Explore Lessons", categories_path, method: :get %>
     <%= button_to "Your Courses", {controller: :courses, action: :index, user_id: current_user.id}, method: :get %>
     <% if privileged %>
-        <%= button_to "Create a Course", new_course_path, method: :get %>
+    <%= button_to "Create a Course", new_course_path, method: :get %>
     <% end %>
     <%= button_to "Logout", {controller: :users, action: 'destroy', id: current_user.id}, method: :delete %>
 </nav>
+
+<h3>Signed in as: <%= current_user.name %> | <%= current_user.authorization.titlecase %> account</h3>
