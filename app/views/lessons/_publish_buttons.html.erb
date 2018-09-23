@@ -1,9 +1,12 @@
 
-<% if !lesson.published %>
-    <%= button_to "Publish", "/lessons/#{lesson.id}/publish", params: {publish: true} %>
-<% else %>
-    <%= button_to "Unpublish", "/lessons/#{lesson.id}/publish", params: {publish: false} %>
-<% end %>
+<div class="lesson-buttons">
 
-<%= button_to "Edit Lesson", edit_lesson_path(lesson), method: :get %>
-<%= button_to "Delete Lesson",delete_lesson_path(lesson), method: :delete %>
+    <% if !lesson.published %>
+        <%= button_to "Publish", "/lessons/#{lesson.id}/publish", params: {publish: true} %>
+    <% else %>
+        <%= button_to "Unpublish", "/lessons/#{lesson.id}/publish", params: {publish: false} %>
+    <% end %>
+
+        <%= button_to "Edit Lesson", edit_lesson_path(lesson), method: :get %>
+        <%= button_to "Delete Lesson",delete_lesson_path(lesson), method: :delete %>
+</div>

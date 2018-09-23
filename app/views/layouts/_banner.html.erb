@@ -9,6 +9,6 @@
     <%= button_to "Logout", {controller: :users, action: 'destroy', id: current_user.id}, method: :delete %>
 </nav>
 
-<h3>Signed in as: <%= current_user.name %> | <%= current_user.authorization.titlecase %> account</h3>
+<h5>Signed in as: <%= current_user.name %> | <%= current_user.authorization.titlecase %> account</h5>
 
 <hr>
