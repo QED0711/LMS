@@ -1,5 +1,5 @@
+<h3>Signed in as: <%= current_user.name %> | <%= current_user.authorization.titlecase %> account</h3>
 <nav class="nav banner">
-    <h3>Signed in as: <%= current_user.name %> | <%= current_user.authorization.titlecase %> account</h3>
     <%= button_to "Home", root_path, method: :get %>
     <%= button_to "Explore Courses", courses_path, method: :get %>
     <%= button_to "Explore Lessons", categories_path, method: :get %>
