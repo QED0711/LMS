@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
       u.name = auth['info']['name']
       u.email = auth['info']['email']
       u.image = auth['info']['image']
-      # binding.pry
       u.password = (auth['uid'].to_i * Time.new.usec).to_s
       u.student!
     end

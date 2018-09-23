@@ -8,7 +8,7 @@ class LessonsController < ApplicationController
         @lesson = Lesson.find(params[:id])
         @contents = @lesson.contents
         if !@lesson.published
-            redirect_to user_courses_path(current_user) unless (current_user.admin? || current_user.instructor?) 
+            redirect_to user_courses_path(current_user) unless privileged 
         else
             @contents = @lesson.contents
         end
@@ -38,8 +38,6 @@ class LessonsController < ApplicationController
         @lesson.courses << @course
         @lesson.users << current_user
         @lesson.published = false
-        # binding.pry
-        # @lesson.category = Category.find_or_create_by(title: "Music") # make this line dynamic
         if @lesson.save
             redirect_to new_lesson_content_path(@lesson)
         else
@@ -57,10 +55,6 @@ class LessonsController < ApplicationController
     def edit
         @lesson = Lesson.find(params[:id])
         @contents = @lesson.contents
-    end
-
-    def update
-
     end
 
     private
