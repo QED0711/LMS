@@ -1,5 +1,6 @@
 <div class="banner">
-    <h3 class="banner-heading">The learning Management System</h3>
+    <h3 class="banner-heading">Your learning Management System</h3>
+    <h5 class="banner-heading">Signed in as: <%= current_user.name %> | <%= current_user.authorization.titlecase %> account</h5>
     <nav class=<%= privileged ? "nav-6" : "nav-5" %>>
         <%= button_to "Home", root_path, method: :get %>
         <%= button_to "Explore Courses", courses_path, method: :get %>
@@ -12,6 +13,5 @@
     </nav>
 </div>
 
-<h5>Signed in as: <%= current_user.name %> | <%= current_user.authorization.titlecase %> account</h5>
 
 <hr>
