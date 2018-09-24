@@ -1,6 +1,6 @@
 <div class="banner">
     <h3 class="banner-heading">The learning Management System</h3>
-    <nav class="nav banner">
+    <nav class=<%= privileged ? "nav-6" : "nav-5" %>>
         <%= button_to "Home", root_path, method: :get %>
         <%= button_to "Explore Courses", courses_path, method: :get %>
         <%= button_to "Explore Lessons", categories_path, method: :get %>
