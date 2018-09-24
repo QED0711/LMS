@@ -25,9 +25,9 @@
 <ul>
 
     <% @lessons.each do |lesson| %>
-
-        <li><%= link_to lesson.title, lesson %></li>
-    
+        <% if lesson.published || privileged %>
+            <li><%= link_to lesson.title, lesson %></li>
+        <% end %>
     <% end %>
 
 </ul>

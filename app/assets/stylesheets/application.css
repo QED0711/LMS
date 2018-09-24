@@ -20,6 +20,9 @@
     --button-color: rgb(0, 180, 225);
 }
 
+html{
+
+}
 
 body {
     text-align: center;
@@ -31,16 +34,20 @@ body {
     margin-top: 150px;
 
 }
+.banner {
+    padding: 10px 0 20px 0;
+    background-color: var(--secondary-background);
+    color: whitesmoke;
+    border-radius: 8px;
+}
 
- .banner {
-     display: grid;
-     grid-template-columns: repeat(6, 1fr);
-     background-color: var(--secondary-background);
-     padding: 10px 0 20px 0;
-     border-radius: 2px;
- }
+.nav {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+    
 
-input, textarea{
+input, textarea, select{
     border-radius: 4px;
     border: 1px solid black;
     margin-top: 4px;
@@ -56,6 +63,10 @@ input[type=submit]{
     padding: 10px;
     margin-top: 10px;
     min-width: 175px;
+}
+
+input[type=submit]:hover{
+    box-shadow: 0 0 20px white;
 }
 
 
